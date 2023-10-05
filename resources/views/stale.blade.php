@@ -27,8 +27,10 @@
 <div id="content" class="mx-auto" style="max-width:500px;">
     <a href="/plan-stale">Stale</a>
     <a href="/plan-planowane">Planowane</a>
-{{--    @livewire('stale-list')--}}
+        @livewire('stale-list')
 </div>
 </body>
 
 </html>
+
+

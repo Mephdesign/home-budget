@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/plan-stale', function () {
+    return view('stale');
+});
 
-Route::get('/plan-stale', [StaleList::class, 'render']);
-Route::get('/plan-planowane', [PlanowaneList::class, 'render']);
+//Route::get('/plan-stale', [StaleList::class, 'render']);
+//Route::get('/plan-planowane', [PlanowaneList::class, 'render']);

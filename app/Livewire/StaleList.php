@@ -89,8 +89,12 @@ class StaleList extends Component
 
     public function delete($id)
     {
-
         Stale::destroy($id);
+
+        $sum = Stale::sum('kwota');
+        $wydSum = WydatkiStaleSum::first();
+        $wydSum->kwota = $sum;
+        $wydSum->save();
 
         session()->flash('success', 'Usunieto');
 
