@@ -33,6 +33,7 @@ class PlanowaneList extends Component
                 'name' => 'required',
                 'kwota' => 'required',
             ]);
+        $validate['miesiac'] = date('m');
 
         Planowane::create($validate);
 
@@ -51,10 +52,10 @@ class PlanowaneList extends Component
 
     public function edit($id)
     {
-        $stale = Planowane::find($id);
-        $this->newName = $stale->name;
-        $this->newKwota = $stale->kwota;
-        $this->editingStaleId = $stale->id;
+        $planowane = Planowane::find($id);
+        $this->newName = $planowane->name;
+        $this->newKwota = $planowane->kwota;
+        $this->editingStaleId = $planowane->id;
     }
 
     public function cancelEdit()
@@ -68,19 +69,24 @@ class PlanowaneList extends Component
             'newName' => 'required',
             'newKwota' => 'required',
         ]);
-        $stale = Planowane::find($this->editingStaleId);
-        $stale->name = $this->newName;
-        $stale->kwota = $this->newKwota;
-        $stale->save();
+        $planowane = Planowane::find($this->editingStaleId);
+        $planowane->name = $this->newName;
+        $planowane->kwota = $this->newKwota;
+        $planowane->save();
+
+        $sum = Planowane::sum('kwota');
+        $wydSum = WydatkiPlanowaneSum::first();
+        $wydSum->kwota = $sum;
+        $wydSum->save();
 
         $this->cancelEdit();
     }
 
     public function toggle($id)
     {
-        $stale = Planowane::find($id);
-        $stale->completed = !$stale->completed;
-        $stale->save();
+        $planowane = Planowane::find($id);
+        $planowane->completed = !$planowane->completed;
+        $planowane->save();
         $sum = Planowane::where('completed' , '0')->sum('kwota');
         $wydSum = WydatkiPlanowaneSum::first();
         $wydSum->pozostalo = $sum;
@@ -92,15 +98,21 @@ class PlanowaneList extends Component
 
         Planowane::destroy($id);
 
+        $sum = Planowane::sum('kwota');
+        $wydSum = WydatkiPlanowaneSum::first();
+        $wydSum->kwota = $sum;
+        $wydSum->save();
+
         session()->flash('success', 'Usunieto');
 
     }
     public function render()
     {
-        return view('plan-stale', [
-            'stale' => Planowane::latest()->where('name','like',"%{$this->search}%")->paginate(5),
+        return view('livewire.planowane-list', [
+            'planowane' => Planowane::latest()->where('name','like',"%{$this->search}%")->paginate(5),
             'wplyw' => Wplyw::latest()->first(),
-            'wydatki_stale_sum' => WydatkiPlanowaneSum::latest()->first()
+            'wydatki_planowane_sum' => WydatkiPlanowaneSum::latest()->first(),
+            'wydatki_stale_sum' => WydatkiStaleSum::latest()->first()
         ]);
     }
 }

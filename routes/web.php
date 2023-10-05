@@ -21,6 +21,7 @@ Route::get('/', function () {
 Route::get('/plan-stale', function () {
     return view('stale');
 });
+Route::get('/plan-planowane', function () {
+    return view('planowane');
+});
 
-//Route::get('/plan-stale', [StaleList::class, 'render']);
-//Route::get('/plan-planowane', [PlanowaneList::class, 'render']);

@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Stale;
 use App\Models\Wplyw;
+use App\Models\WydatkiPlanowaneSum;
 use App\Models\WydatkiStaleSum;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
@@ -73,6 +74,11 @@ class StaleList extends Component
         $stale->kwota = $this->newKwota;
         $stale->save();
 
+        $sum = Stale::sum('kwota');
+        $wydSum = WydatkiStaleSum::first();
+        $wydSum->kwota = $sum;
+        $wydSum->save();
+
         $this->cancelEdit();
     }
 
@@ -104,7 +110,8 @@ class StaleList extends Component
         return view('livewire.stale-list', [
             'stale' => Stale::latest()->where('name','like',"%{$this->search}%")->paginate(5),
             'wplyw' => Wplyw::latest()->first(),
-            'wydatki_stale_sum' => WydatkiStaleSum::latest()->first()
+            'wydatki_stale_sum' => WydatkiStaleSum::latest()->first(),
+            'wydatki_planowane_sum' => WydatkiPlanowaneSum::latest()->first()
         ]);
     }
 }
