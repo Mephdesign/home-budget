@@ -1,9 +1,9 @@
 <div>
     Wpływ: {{ $wplyw->kwota }} zł <br>
-    Wydatki stałe: {{ $wydatki_stale_sum->kwota }} | Pozostało: {{ $wydatki_stale_sum->pozostalo }} <br>
-    Wydatki planowane: {{ $wydatki_planowane_sum->kwota }}
+    Stałe: {{ $wydatki_stale_sum->kwota }} zł | Pozostało: {{ $wydatki_stale_sum->pozostalo }} zł <br>
+    Planowane: {{ $wydatki_planowane_sum->kwota }} zł
     @php
         $d = $wplyw->kwota - $wydatki_stale_sum->kwota - $wydatki_planowane_sum->kwota;
     @endphp
-    Pozostało: {{ $wplyw->kwota - $wydatki_stale_sum->kwota - $wydatki_planowane_sum->kwota }} | Limit dzienny: {{ $d / 30 }} zł <br>
+    Pozostało: {{ $wplyw->kwota - $wydatki_stale_sum->kwota - $wydatki_planowane_sum->kwota }} zł | Limit dzienny: {{ number_format($d / 30, 2) }} zł <br>
 </div>

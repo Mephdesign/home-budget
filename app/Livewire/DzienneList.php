@@ -102,7 +102,8 @@ class DzienneList extends Component
             'dzienne' => Dzienne::latest()->where('name','like',"%{$this->search}%")->paginate(5),
             'wplyw' => Wplyw::latest()->first(),
             'wydatki_planowane_sum' => WydatkiPlanowaneSum::latest()->first(),
-            'wydatki_stale_sum' => WydatkiStaleSum::latest()->first()
+            'wydatki_stale_sum' => WydatkiStaleSum::latest()->first(),
+            'wydatki_dzienne_sum' => Dzienne::where('miesiac', date('m'))->sum('kwota')
         ]);
     }
 }
