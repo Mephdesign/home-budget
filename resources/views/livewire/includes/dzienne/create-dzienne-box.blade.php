@@ -1,8 +1,11 @@
+@php
+    $data = date('Y-m-d')
+@endphp
 <div class="container content py-6 mx-auto">
     <div class="mx-auto">
         <div id="create-form" class="hover:shadow p-6 bg-white border-blue-500 border-t-2">
             <div class="flex">
-                <h1 class="font-semibold text-lg text-gray-800 mb-5">Wydatki stałe</h1>
+                <h1 class="font-semibold text-lg text-gray-800 mb-5">Wydatki w dniu {{ $data }}</h1>
             </div>
             <div class="flex">
                 <h2 class="font-semibold text-lg text-gray-800 mb-5">Dodaj wydatek</h2>

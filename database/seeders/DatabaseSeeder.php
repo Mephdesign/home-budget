@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             WydatkiStaleSumSeeder::class,
             ConfigSeeder::class,
             WydatkiPlanowaneSeeder::class,
-            WydatkiPlanowaneSumSeeder::class
+            WydatkiPlanowaneSumSeeder::class,
+            WydatkiDzienneSeeder::class,
         ]);
     }
 }

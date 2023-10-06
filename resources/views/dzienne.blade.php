@@ -26,7 +26,7 @@
 </div>
 <div id="content" class="mx-auto" style="max-width:500px;">
     @include('livewire.includes.nav')
-        @livewire('planowane-list')
+        @livewire('dzienne-list')
 </div>
 </body>
 

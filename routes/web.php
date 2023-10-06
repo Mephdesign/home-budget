@@ -1,7 +1,5 @@
 <?php
 
-use App\Livewire\PlanowaneList;
-use App\Livewire\StaleList;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +22,6 @@ Route::get('/plan-stale', function () {
 Route::get('/plan-planowane', function () {
     return view('planowane');
 });
-
+Route::get('/dzienne', function () {
+    return view('dzienne');
+});

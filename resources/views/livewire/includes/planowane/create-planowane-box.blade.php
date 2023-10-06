@@ -2,10 +2,10 @@
     <div class="mx-auto">
         <div id="create-form" class="hover:shadow p-6 bg-white border-blue-500 border-t-2">
             <div class="flex">
-                <h1 class="font-semibold text-lg text-gray-800 mb-5 center">Wydatki stale</h1>
+                <h1 class="font-semibold text-lg text-gray-800 mb-5">Wydatki planowane</h1>
             </div>
             <hr>
-            <div class="flex mt-6">
+            <div class="flex">
                 <h2 class="font-semibold text-lg text-gray-800 mb-5">Dodaj wydatek</h2>
             </div>
             <div>

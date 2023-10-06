@@ -25,8 +25,7 @@
     </div>
 </div>
 <div id="content" class="mx-auto" style="max-width:500px;">
-    <a href="/plan-stale">Stale</a>
-    <a href="/plan-planowane">Planowane</a>
+        @include('livewire.includes.nav')
         @livewire('stale-list')
 </div>
 </body>

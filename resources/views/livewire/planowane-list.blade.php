@@ -1,14 +1,8 @@
 <div class="bg-white">
-    Wpływ: {{ $wplyw->kwota }} zł <br>
-    Wydatki stałe: {{ $wydatki_stale_sum->kwota }} | Pozostało: {{ $wydatki_stale_sum->pozostalo }} <br>
-    Wydatki planowane: {{ $wydatki_planowane_sum->kwota }}
-    @php
-        $d = $wplyw->kwota - $wydatki_stale_sum->kwota - $wydatki_planowane_sum->kwota;
-    @endphp
-    Pozostało: {{ $wplyw->kwota - $wydatki_stale_sum->kwota - $wydatki_planowane_sum->kwota }} | Limit dzienny: {{ $d / 30 }} zł <br>
-    @include('livewire.includes.planowane.create-stale-box')
+    @include('livewire.includes.header')
+    @include('livewire.includes.planowane.create-planowane-box')
     @include('livewire.includes.planowane.search-box')
-    <div id="stale-list">
+    <div id="planowane-list">
         @foreach($planowane as $planowany)
             @include('livewire.includes.planowane.planowane-card')
         @endforeach
