@@ -14,14 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dzienne');
 });
 Route::get('/plan-stale', function () {
     return view('stale');
 });
 Route::get('/plan-planowane', function () {
     return view('planowane');
-});
-Route::get('/dzienne', function () {
-    return view('dzienne');
 });
