@@ -10,5 +10,5 @@ class Dzienne extends Model
     use HasFactory;
     protected $table = 'wydatki_dzienne';
 
-    protected $fillable = ['name','miesiac', 'kwota'];
+    protected $fillable = ['name','miesiac', 'kwota','aktual'];
 }

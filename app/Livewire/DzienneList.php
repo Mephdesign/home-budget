@@ -7,6 +7,8 @@ use App\Models\Planowane;
 use App\Models\Wplyw;
 use App\Models\WydatkiPlanowaneSum;
 use App\Models\WydatkiStaleSum;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -103,7 +105,9 @@ class DzienneList extends Component
             'wplyw' => Wplyw::latest()->first(),
             'wydatki_planowane_sum' => WydatkiPlanowaneSum::latest()->first(),
             'wydatki_stale_sum' => WydatkiStaleSum::latest()->first(),
-            'wydatki_dzienne_sum' => Dzienne::where('created_at','like','%'.date('Y-m-d'.'%'))->sum('kwota')
+            'wydatki_dzienne_sum' => Dzienne::where('created_at','like','%'.date('Y-m-d'.'%'))->where('aktual', 1)->sum('kwota'),
+            'wydatki_miesieczne_sum' => Dzienne::where('miesiac','=', date('m'))->where('aktual', 1)->sum('kwota'),
+            'reset_day' => DB::table('config')->first()
         ]);
     }
 }

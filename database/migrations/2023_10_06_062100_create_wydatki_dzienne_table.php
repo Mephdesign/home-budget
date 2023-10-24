@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('miesiac');
             $table->string('name');
             $table->decimal('kwota','10','2');
+            $table->boolean('aktual')->default(1);
             $table->timestamps();
         });
     }

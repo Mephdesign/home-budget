@@ -185,4 +185,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'reset_day' => 26
+
 ];
