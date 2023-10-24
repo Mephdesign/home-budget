@@ -1,5 +1,5 @@
 <div>
-    @include('livewire.includes.header')
+@include('livewire.includes.header')
     @include('livewire.includes.dzienne.create-dzienne-box')
     @include('livewire.includes.dzienne.search-box')
     <div id="dzienne-list">
