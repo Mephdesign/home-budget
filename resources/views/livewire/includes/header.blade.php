@@ -1,4 +1,4 @@
-<div class="m-5">
+<div class="mx-5">
     Wpływ: {{ $wplyw->kwota }} zł <br>
     Stałe: {{ $wydatki_stale_sum->kwota }} zł | Pozostało: {{ $wydatki_stale_sum->pozostalo }} zł <br>
     Planowane: {{ $wydatki_planowane_sum->kwota }} zł | Pozostało: {{ $wydatki_planowane_sum->pozostalo }} zł <br>

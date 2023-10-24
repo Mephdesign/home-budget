@@ -8,7 +8,7 @@
 
 @endphp
 <div class="container content py-6 mx-auto">
-    {{ 'Aktualnie na dzień: '. number_format($zostalo / $diff, '2')}} zł do końca {{ $diff }} dni
+    <p class="m-5">{{ 'Aktualnie na dzień: '. number_format($zostalo / $diff, '2')}} zł do końca {{ $diff }} dni</p>
     <div class="mx-auto">
         <div id="create-form" class="hover:shadow p-6 bg-white border-blue-500 border-t-2">
             <div class="flex">
