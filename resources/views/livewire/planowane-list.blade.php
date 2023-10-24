@@ -1,4 +1,4 @@
-<div class="bg-white">
+<div>
     @include('livewire.includes.header')
     @include('livewire.includes.planowane.create-planowane-box')
     @include('livewire.includes.planowane.search-box')
