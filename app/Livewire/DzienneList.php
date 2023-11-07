@@ -100,13 +100,14 @@ class DzienneList extends Component
     }
     public function render()
     {
+        $wplyw = Wplyw::latest()->first();
         return view('livewire.dzienne-list', [
             'dzienne' => Dzienne::latest()->where('name','like',"%{$this->search}%")->where('created_at','like','%'.date('Y-m-d'.'%'))->paginate(5),
-            'wplyw' => Wplyw::latest()->first(),
+            'wplyw' => $wplyw,
             'wydatki_planowane_sum' => WydatkiPlanowaneSum::latest()->first(),
             'wydatki_stale_sum' => WydatkiStaleSum::latest()->first(),
             'wydatki_dzienne_sum' => Dzienne::where('created_at','like','%'.date('Y-m-d'.'%'))->where('aktual', 1)->sum('kwota'),
-            'wydatki_miesieczne_sum' => Dzienne::where('miesiac','=', date('m'))->where('aktual', 1)->sum('kwota'),
+            'wydatki_miesieczne_sum' => Dzienne::where('created_at','>', $wplyw->created_at)->where('aktual', 1)->sum('kwota'),
             'reset_day' => DB::table('config')->first()
         ]);
     }
